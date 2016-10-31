@@ -18,9 +18,11 @@
 
 /**
  * @fileoverview Map Label.
+ *              Modified to add label canvases to overlayLayer rather than mapPane by Amy Gottsegen on 10-31-16.
  *
  * @author Luke Mahe (lukem@google.com),
  *         Chris Broadfoot (cbro@google.com)
+ *         Amy Gottsegen (amg463@drexel.edu)
  */
 
 /**
@@ -106,6 +108,7 @@ MapLabel.prototype.drawCanvas_ = function() {
  */
 MapLabel.prototype.onAdd = function() {
   var canvas = this.canvas_ = document.createElement('canvas');
+  canvas.className = "map-label";
   var style = canvas.style;
   style.position = 'absolute';
 
@@ -117,7 +120,7 @@ MapLabel.prototype.onAdd = function() {
 
   var panes = this.getPanes();
   if (panes) {
-    panes.mapPane.appendChild(canvas);
+    panes.overlayLayer.appendChild(canvas);
   }
 };
 MapLabel.prototype['onAdd'] = MapLabel.prototype.onAdd;
